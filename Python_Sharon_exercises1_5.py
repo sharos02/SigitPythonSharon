@@ -109,7 +109,6 @@ def perform(value):
 
 def map_function(array, function_name):
     """ Exercise 5 """
-    # Function returns
     return [function_name(val) for val in array]
 
 
