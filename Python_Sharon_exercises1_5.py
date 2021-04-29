@@ -6,7 +6,7 @@ def sum_numbers():
     while to_add.lower() != "stop":
         if to_add.isdigit():
             sum += int(to_add)
-        to_add = input('     Enter a number (Quit with "stop": ')
+        to_add = input('     Enter a number (Quit with "stop"): ')
     return sum
 
 
@@ -14,7 +14,7 @@ def sum_list_numbers():
     """ Exercise 1-b """
     # Function returns the sum of the numbers entered as a list
     sum = 0
-    num_list = input("Enter a list of numbers in the following format -> a, b, c, d: ").split(",")
+    num_list = input("1-b) Enter a list of numbers in the following format -> a, b, c, d: ").split(",")
     try:
         for num in num_list:
             sum += int(num)
@@ -27,8 +27,8 @@ def check_xo_win(mat):
     """ Exercise 2 """
     # Function gets a matrix (board of tic-tac-toe)
     # Function prints which player won the game
-    print("2) ", end="")
-    if mat[0][0] == mat[0][1] == mat[0][1] == 1 or mat[1][0] == mat[1][1] == mat[1][2] == 1 or \
+    print("2) ", mat, end="\t")
+    if mat[0][0] == mat[0][1] == mat[0][2] == 1 or mat[1][0] == mat[1][1] == mat[1][2] == 1 or \
             mat[2][0] == mat[2][1] == mat[2][2] == 1:
         print("Result: Player #1 is the Winner!")
     elif mat[0][0] == mat[1][0] == mat[2][0] == 1 or mat[1][0] == mat[1][1] == mat[1][2] == 1 or \
@@ -114,7 +114,7 @@ def map_function(array, function_name):
 
 def main():
     print("Sum of the entered number: ", sum_numbers())
-    print("1-b) Sum of the entered numbers: ", sum_list_numbers())
+    print("Sum of the entered numbers: ", sum_list_numbers())
     check_xo_win([[1, 2, 0], [2, 1, 0], [2, 1, 1]])
     print("3) The Compressed Expression is: ", compress_string())
     check_id()
