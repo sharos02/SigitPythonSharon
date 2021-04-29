@@ -134,12 +134,12 @@ class Account:
             print("Error!")
 
 
-def client_tui(connection, current_account):
+def client_tui(connection):
     instructions = "1 - Log in to Account\n2 - Register a New Account\n3 - Deposit Funds to Your Account\n4 - " \
                    "Withdraw Funds From Your Account\n5 - Display Balance\n6 - Disconnect From Account "
+    current_account = Account("", "")
     try:
         connection.send(bytes(instructions, "UTF-8"))
-        current_account = Account("", "")
         while True:
             client_response = connection.recv(1024).decode("UTF-8")
             print("Response from ATM (Client): ", client_response)
@@ -203,7 +203,8 @@ def client_tui(connection, current_account):
             else:
                 connection.send(bytes("Unknown Command.", "UTF-8"))
     except ConnectionResetError:
-        print(current_account.disconnect_from_account())
+        if current_account.get_user_name() != "":
+            print(current_account.disconnect_from_account())
 
 
 def start_connection_thread(conn, address):
@@ -227,9 +228,9 @@ def start_server():
     print("Waiting For Connection...\n")
     connect_to_clients(server_socket)
 
+
 def main():
     start_server()
-
 
 
 if __name__ == '__main__':
